@@ -25,3 +25,4 @@ public record ClassDetailResponse(
     int ConfirmedSeats,
     int AvailableSeats
 );
+

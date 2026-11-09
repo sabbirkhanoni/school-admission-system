@@ -11,3 +11,4 @@ public class HoldEntity
 
     public ClassEntity? Class { get; set; }
 }
+
