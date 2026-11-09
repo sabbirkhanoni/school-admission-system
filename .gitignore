@@ -1,0 +1,12 @@
+*.pdf
+bin/
+obj/
+node_modules/
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.log
+dist/
+
