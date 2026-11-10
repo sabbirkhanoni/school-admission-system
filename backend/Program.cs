@@ -5,10 +5,10 @@ using SchoolAdmissionSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Database Connection String from environment variable or appsettings
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-                      ?? builder.Configuration["DATABASE_URL"]
+// Database Connection String: Environment variable takes precedence over appsettings.json
+var connectionString = builder.Configuration["DATABASE_URL"]
                       ?? builder.Configuration["POSTGRES_CONNECTION"]
+                      ?? builder.Configuration.GetConnectionString("DefaultConnection")
                       ?? "Host=localhost;Port=5432;Database=school_admission;Username=postgres;Password=postgres";
 
 builder.Services.AddDbContext<AppDbContext>(options =>
