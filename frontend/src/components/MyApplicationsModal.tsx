@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, History, Inbox } from 'lucide-react';
 import { StudentHold } from '../types';
 import { HoldCard } from './HoldCard';
@@ -18,6 +18,16 @@ export const MyApplicationsModal: React.FC<MyApplicationsModalProps> = ({
   onConfirm,
   onCancel,
 }) => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
