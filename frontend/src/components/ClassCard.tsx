@@ -20,6 +20,7 @@ export const ClassCard: React.FC<ClassCardProps> = ({
   const isSeatFull = cls.availableSeats <= 0;
   const percentConfirmed = Math.round((cls.confirmedSeats / cls.totalSeats) * 100);
   const percentHeld = Math.round((cls.heldSeats / cls.totalSeats) * 100);
+  const percentAvailable = Math.max(0, 100 - (percentConfirmed + percentHeld));
 
   return (
     <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
@@ -33,35 +34,46 @@ export const ClassCard: React.FC<ClassCardProps> = ({
             <p className="text-xs text-gray-400 font-mono mt-0.5">ID: {cls.id}</p>
           </div>
           <span
-            className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap ${
+            className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap shadow-sm ${
               isSeatFull
-                ? 'bg-rose-100 text-rose-800'
+                ? 'bg-rose-100 text-rose-800 border border-rose-200'
                 : cls.availableSeats < 10
-                ? 'bg-amber-100 text-amber-800 animate-pulse'
-                : 'bg-emerald-100 text-emerald-800'
+                ? 'bg-amber-100 text-amber-800 animate-pulse border border-amber-200'
+                : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
             }`}
           >
             {cls.availableSeats} Available
           </span>
         </div>
 
-        {/* Capacity Visual Bar */}
-        <div className="mb-5">
-          <div className="h-2.5 w-full bg-gray-100 rounded-full overflow-hidden flex">
+        {/* 1. Segmented Capacity Progress Bar */}
+        <div className="mb-4">
+          <div className="flex justify-between items-center text-xs font-semibold mb-1.5 text-gray-600">
+            <span>Seat Allocation</span>
+            <span className="font-mono">{cls.confirmedSeats + cls.heldSeats} / {cls.totalSeats} ({percentConfirmed + percentHeld}%)</span>
+          </div>
+
+          <div className="h-3 w-full bg-gray-100 rounded-full overflow-hidden flex shadow-inner">
             <div
               style={{ width: `${percentConfirmed}%` }}
               className="bg-emerald-500 h-full transition-all duration-500"
-              title={`Confirmed: ${cls.confirmedSeats}`}
+              title={`Confirmed: ${cls.confirmedSeats} (${percentConfirmed}%)`}
             />
             <div
               style={{ width: `${percentHeld}%` }}
-              className="bg-amber-400 h-full transition-all duration-500"
-              title={`Held: ${cls.heldSeats}`}
+              className="bg-amber-400 h-full transition-all duration-500 animate-pulse"
+              title={`Held: ${cls.heldSeats} (${percentHeld}%)`}
+            />
+            <div
+              style={{ width: `${percentAvailable}%` }}
+              className="bg-slate-200 h-full transition-all duration-500"
+              title={`Available: ${cls.availableSeats} (${percentAvailable}%)`}
             />
           </div>
+
           <div className="flex justify-between items-center text-[11px] text-gray-400 mt-1 font-medium">
             <span>0</span>
-            <span>{cls.totalSeats} Total Seats</span>
+            <span>{cls.totalSeats} Total Capacity</span>
           </div>
         </div>
 
