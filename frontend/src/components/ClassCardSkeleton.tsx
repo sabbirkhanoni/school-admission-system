@@ -51,6 +51,21 @@ export const ClassCardSkeleton: React.FC = () => {
             <div className="h-2.5 bg-slate-200 rounded w-16" />
           </div>
         </div>
+
+        {/* 3. Metrics Grid Skeleton */}
+        <div className="grid grid-cols-4 gap-2 text-center p-3 rounded-xl bg-gray-50/80 border border-gray-100 mb-6">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="flex flex-col items-center gap-1.5">
+              <div className="h-2.5 bg-slate-200 rounded w-10" />
+              <div className="h-4 bg-slate-200 rounded w-8" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 4. Action Button Skeleton */}
+      <div>
+        <div className="w-full h-10 rounded-xl bg-slate-200/90" />
       </div>
     </div>
   );
