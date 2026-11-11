@@ -39,7 +39,13 @@ export const ClassCardSkeleton: React.FC = () => {
             {Array.from({ length: 60 }).map((_, i) => (
               <div
                 key={i}
-                className="w-4 h-4 rounded-sm bg-slate-200/70"
+                className={`w-4 h-4 rounded-sm ${
+                  i < 12
+                    ? 'bg-emerald-200/60'
+                    : i < 18
+                    ? 'bg-amber-200/60'
+                    : 'bg-slate-200/60'
+                }`}
               />
             ))}
           </div>
