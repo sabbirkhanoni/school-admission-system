@@ -74,6 +74,7 @@ dotnet test backend.csproj
 - **Live 60-Seat Classroom Matrix:** Visual mini-hall grid dynamically depicting real-time seat states (`Confirmed` in Emerald, `Held` in Pulsing Amber, `Available` in Clean Slate).
 - **Interactive Seat Tooltips:** Hovering any seat reveals the exact seat number and live occupancy status.
 - **Segmented Capacity Progress Bar:** Instant percentage breakdown showing confirmed vs held vs available ratios.
+- **Shimmer Skeleton Loading State:** Replaces traditional spinners with realistic 60-seat card skeleton layouts to deliver smooth perceptual loading performance.
 - **Live Student ID Validator:** Real-time digit counter (`X/17`) with emerald verification checkmark on valid 17-digit Birth Registration Number input.
 - **Accessible Modal Controls:** Full keyboard navigation support (Escape key dismiss) and backdrop blur overlays for application views and class creation.
 

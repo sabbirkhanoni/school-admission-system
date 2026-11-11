@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Header } from './components/Header';
 import { ClassCard } from './components/ClassCard';
+import { ClassCardSkeleton } from './components/ClassCardSkeleton';
 import { HoldCard } from './components/HoldCard';
 import { CreateClassModal } from './components/CreateClassModal';
 import { MyApplicationsModal } from './components/MyApplicationsModal';
@@ -201,9 +202,10 @@ export const App: React.FC = () => {
 
         {/* Classes Grid */}
         {loading ? (
-          <div className="py-20 text-center text-gray-400">
-            <RefreshCw className="w-8 h-8 mx-auto mb-2 animate-spin text-indigo-500" />
-            <p className="text-sm">Loading classes...</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <ClassCardSkeleton key={index} />
+            ))}
           </div>
         ) : classes.length === 0 ? (
           <div className="py-16 text-center bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
