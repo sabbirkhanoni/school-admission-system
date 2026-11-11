@@ -27,6 +27,30 @@ export const ClassCardSkeleton: React.FC = () => {
             <div className="h-2.5 bg-slate-100 rounded w-24" />
           </div>
         </div>
+
+        {/* 2. Mini Seat Grid Skeleton (5 rows x 12 cols = 60 nodes) */}
+        <div className="mb-5 p-3.5 bg-slate-50/70 rounded-xl border border-slate-100">
+          <div className="flex items-center justify-between mb-2.5">
+            <div className="h-3 bg-slate-200 rounded w-28" />
+            <div className="h-2.5 bg-slate-100 rounded w-20" />
+          </div>
+
+          <div className="grid grid-cols-10 sm:grid-cols-12 gap-1.5 justify-center py-1">
+            {Array.from({ length: 60 }).map((_, i) => (
+              <div
+                key={i}
+                className="w-4 h-4 rounded-sm bg-slate-200/70"
+              />
+            ))}
+          </div>
+
+          {/* Legend Skeleton */}
+          <div className="flex items-center justify-center gap-4 pt-2.5 mt-2 border-t border-slate-100">
+            <div className="h-2.5 bg-slate-200 rounded w-16" />
+            <div className="h-2.5 bg-slate-200 rounded w-14" />
+            <div className="h-2.5 bg-slate-200 rounded w-16" />
+          </div>
+        </div>
       </div>
     </div>
   );
