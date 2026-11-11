@@ -45,6 +45,6 @@ Our concurrency control uses **PostgreSQL Row-Level Locking (`SELECT ... FOR UPD
 
 ## 5. Mock Payment Gateway
 
-- In accordance with Section 1.3, clicking "Pay Admission Fee" ("ভর্তি ফি দিন") assumes payment is immediately successful without integrating an external gateway.
+- In accordance with Section 1.3, clicking "Pay Admission Fee" assumes payment is immediately successful without integrating an external gateway.
 - Confirmation is idempotent; repeated confirmation calls return HTTP 200 `CONFIRMED` without incrementing confirmed seat counts.
 
