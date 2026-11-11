@@ -26,9 +26,12 @@ export const ClassCard: React.FC<ClassCardProps> = ({
       <div>
         {/* Class Name & Availability Pill */}
         <div className="flex items-start justify-between gap-2 mb-4">
-          <h3 className="text-lg font-bold text-gray-900 leading-snug">
-            {cls.name}
-          </h3>
+          <div>
+            <h3 className="text-lg font-bold text-gray-900 leading-snug">
+              {cls.name}
+            </h3>
+            <p className="text-xs text-gray-400 font-mono mt-0.5">ID: {cls.id}</p>
+          </div>
           <span
             className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap ${
               isSeatFull
