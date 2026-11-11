@@ -44,7 +44,7 @@ export const ClassCard: React.FC<ClassCardProps> = ({
   });
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+    <div className="bg-white rounded-2xl border border-blue-600 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
       <div>
         {/* Class Name & Availability Badge */}
         <div className="flex items-start justify-between gap-2 mb-4">
@@ -55,13 +55,12 @@ export const ClassCard: React.FC<ClassCardProps> = ({
             <p className="text-xs text-gray-400 font-mono mt-0.5">ID: {cls.id}</p>
           </div>
           <span
-            className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap shadow-sm ${
-              isSeatFull
+            className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap shadow-sm ${isSeatFull
                 ? 'bg-rose-100 text-rose-800 border border-rose-200'
                 : cls.availableSeats < 10
-                ? 'bg-amber-100 text-amber-800 animate-pulse border border-amber-200'
-                : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
-            }`}
+                  ? 'bg-amber-100 text-amber-800 animate-pulse border border-amber-200'
+                  : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+              }`}
           >
             {cls.availableSeats} Available
           </span>
@@ -117,13 +116,12 @@ export const ClassCard: React.FC<ClassCardProps> = ({
             {previewSeats.map((seat) => (
               <div
                 key={seat.seatNumber}
-                className={`relative group w-4 h-4 rounded-sm flex items-center justify-center transition-transform hover:scale-125 cursor-pointer ${
-                  seat.type === 'confirmed'
+                className={`relative group w-4 h-4 rounded-sm flex items-center justify-center transition-transform hover:scale-125 cursor-pointer ${seat.type === 'confirmed'
                     ? 'bg-emerald-500 shadow-sm shadow-emerald-200'
                     : seat.type === 'held'
-                    ? 'bg-amber-400 animate-pulse shadow-sm shadow-amber-200'
-                    : 'bg-white border border-slate-300 hover:border-indigo-400'
-                }`}
+                      ? 'bg-amber-400 animate-pulse shadow-sm shadow-amber-200'
+                      : 'bg-white border border-slate-300 hover:border-indigo-400'
+                  }`}
               >
                 {/* Tooltip on hover */}
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 hidden group-hover:flex flex-col items-center z-20 pointer-events-none whitespace-nowrap">
@@ -133,8 +131,8 @@ export const ClassCard: React.FC<ClassCardProps> = ({
                       {seat.type === 'confirmed'
                         ? 'Confirmed'
                         : seat.type === 'held'
-                        ? 'Held (In Progress)'
-                        : 'Available'}
+                          ? 'Held (In Progress)'
+                          : 'Available'}
                     </span>
                   </div>
                   <div className="w-1.5 h-1.5 bg-gray-900 rotate-45 -mt-0.5" />
@@ -195,15 +193,14 @@ export const ClassCard: React.FC<ClassCardProps> = ({
         <button
           onClick={() => onApply(cls.id)}
           disabled={isSeatFull || hasActiveHoldInThisClass || !isValidStudentId || isApplying}
-          className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-sm ${
-            hasActiveHoldInThisClass
+          className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-sm ${hasActiveHoldInThisClass
               ? 'bg-gray-100 text-gray-500 cursor-not-allowed border border-gray-200'
               : isSeatFull
-              ? 'bg-rose-50 text-rose-400 cursor-not-allowed border border-rose-100'
-              : !isValidStudentId
-              ? 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
-              : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-200 hover:shadow-indigo-300'
-          }`}
+                ? 'bg-rose-50 text-rose-400 cursor-not-allowed border border-rose-100'
+                : !isValidStudentId
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
+                  : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-200 hover:shadow-indigo-300'
+            }`}
         >
           {isApplying ? (
             <span>Applying...</span>

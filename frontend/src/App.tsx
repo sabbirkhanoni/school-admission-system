@@ -243,7 +243,7 @@ export const App: React.FC = () => {
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-6 text-center text-xs text-gray-500">
-        School Admission System • Built with .NET 8, PostgreSQL, React 18 & Docker
+        School Admission System
       </footer>
 
       {/* Modals */}
