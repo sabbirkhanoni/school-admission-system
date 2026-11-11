@@ -58,11 +58,15 @@ export const Header: React.FC<HeaderProps> = ({
                     : 'border-gray-300 focus:ring-indigo-100 focus:border-indigo-500'
                 }`}
               />
-              {isValidLength && (
+              {isValidLength ? (
                 <div className="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none text-emerald-600">
                   <Check className="w-4 h-4" />
                 </div>
-              )}
+              ) : studentId.length > 0 ? (
+                <div className="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none text-gray-400 text-[10px] font-mono font-medium">
+                  {studentId.length}/17
+                </div>
+              ) : null}
             </div>
 
             {/* My Applications Button */}
