@@ -110,15 +110,15 @@ export const ClassCard: React.FC<ClassCardProps> = ({
           {isApplying ? (
             <span>Applying...</span>
           ) : hasActiveHoldInThisClass ? (
-            <span>Already Applied (আবেদন করা হয়েছে)</span>
+            <span>Already Applied</span>
           ) : isSeatFull ? (
-            <span>No Seats Available (আসন পূর্ণ)</span>
+            <span>No Seats Available</span>
           ) : !isValidStudentId ? (
             <span>Enter 17-digit ID to Apply</span>
           ) : (
             <>
               <Send className="w-4 h-4" />
-              <span>Apply for Seat (আবেদন করুন)</span>
+              <span>Apply for Seat</span>
             </>
           )}
         </button>
@@ -126,4 +126,3 @@ export const ClassCard: React.FC<ClassCardProps> = ({
     </div>
   );
 };
-
