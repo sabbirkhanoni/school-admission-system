@@ -12,7 +12,7 @@ export const AlertBanner: React.FC<AlertProps> = ({
   type,
   message,
   onClose,
-  autoCloseDuration = 5000,
+  autoCloseDuration = 2000,
 }) => {
   const isError = type === 'error';
 
@@ -26,11 +26,10 @@ export const AlertBanner: React.FC<AlertProps> = ({
 
   return (
     <div
-      className={`fixed top-4 right-4 z-50 flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg border text-sm max-w-md transition-all ${
-        isError
+      className={`fixed top-4 right-4 z-50 flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg border text-sm max-w-md transition-all ${isError
           ? 'bg-red-50 border-red-200 text-red-800'
           : 'bg-emerald-50 border-emerald-200 text-emerald-800'
-      }`}
+        }`}
     >
       {isError ? (
         <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
