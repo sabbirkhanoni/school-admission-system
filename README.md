@@ -59,12 +59,23 @@ dotnet test backend.csproj
    - 17-digit Student ID validation (HTTP 400).
    - Single active hold constraint per student per class (HTTP 400).
    - Student ownership validation for confirmation (HTTP 403).
+   - Unauthorized hold cancellation prevention (HTTP 403 Forbidden).
    - Idempotent confirmation check (seat count never increments twice).
 2. **ApiContractTests.cs:**
    - Strict contract verification for all 8 REST endpoints matching the assignment specification.
 3. **ConcurrencyTests.cs (Mandatory Concurrency Test):**
    - Simulates 25 concurrent student hold requests sent simultaneously against a class with only 5 seats.
    - Verifies that exactly 5 succeed (HTTP 201 Created), 20 fail with HTTP 409 Conflict, and total holds never exceed total seats.
+
+---
+
+## 🎨 Frontend Features & Interactive Matrix Preview
+
+- **Live 60-Seat Classroom Matrix:** Visual mini-hall grid dynamically depicting real-time seat states (`Confirmed` in Emerald, `Held` in Pulsing Amber, `Available` in Clean Slate).
+- **Interactive Seat Tooltips:** Hovering any seat reveals the exact seat number and live occupancy status.
+- **Segmented Capacity Progress Bar:** Instant percentage breakdown showing confirmed vs held vs available ratios.
+- **Live Student ID Validator:** Real-time digit counter (`X/17`) with emerald verification checkmark on valid 17-digit Birth Registration Number input.
+- **Accessible Modal Controls:** Full keyboard navigation support (Escape key dismiss) and backdrop blur overlays for application views and class creation.
 
 ---
 

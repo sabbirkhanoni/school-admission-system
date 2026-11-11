@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AlertCircle, CheckCircle2, X } from 'lucide-react';
 
 interface AlertProps {
   type: 'error' | 'success';
   message: string;
   onClose: () => void;
+  autoCloseDuration?: number;
 }
 
-export const AlertBanner: React.FC<AlertProps> = ({ type, message, onClose }) => {
+export const AlertBanner: React.FC<AlertProps> = ({
+  type,
+  message,
+  onClose,
+  autoCloseDuration = 5000,
+}) => {
   const isError = type === 'error';
+
+  useEffect(() => {
+    if (!autoCloseDuration || autoCloseDuration <= 0) return;
+    const timer = setTimeout(() => {
+      onClose();
+    }, autoCloseDuration);
+    return () => clearTimeout(timer);
+  }, [onClose, autoCloseDuration, message]);
 
   return (
     <div

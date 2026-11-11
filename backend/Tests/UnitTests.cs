@@ -106,5 +106,28 @@ public class UnitTests : IClassFixture<TestFactory>
         Assert.Equal(1, classDetail.ConfirmedSeats);
         Assert.Equal(0, classDetail.HeldSeats);
     }
+
+    [Fact]
+    public async Task CancelHold_BelongingToAnotherStudent_ReturnsForbidden()
+    {
+        var classRes = await _client.PostAsJsonAsync("/classes", new CreateClassRequest("Class 4 - Security Test", 10));
+        var createdClass = await classRes.Content.ReadFromJsonAsync<ClassResponse>();
+        Assert.NotNull(createdClass);
+
+        var student1 = "20152694444444444";
+        var student2 = "20152695555555555";
+
+        var holdReq = new HttpRequestMessage(HttpMethod.Post, $"/classes/{createdClass.Id}/holds");
+        holdReq.Headers.Add("X-Student-Id", student1);
+        var holdRes = await _client.SendAsync(holdReq);
+        var holdData = await holdRes.Content.ReadFromJsonAsync<CreateHoldResponse>();
+        Assert.NotNull(holdData);
+
+        // Student 2 tries to cancel student 1's hold
+        var cancelReq = new HttpRequestMessage(HttpMethod.Delete, $"/holds/{holdData.HoldId}");
+        cancelReq.Headers.Add("X-Student-Id", student2);
+        var cancelRes = await _client.SendAsync(cancelReq);
+        Assert.Equal(HttpStatusCode.Forbidden, cancelRes.StatusCode);
+    }
 }
 

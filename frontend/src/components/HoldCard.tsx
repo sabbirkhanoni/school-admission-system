@@ -122,7 +122,7 @@ export const HoldCard: React.FC<HoldCardProps> = ({ hold, onConfirm, onCancel })
             className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-200 disabled:text-gray-400 text-white text-sm font-semibold rounded-lg shadow-sm transition-all"
           >
             <CreditCard className="w-4 h-4" />
-            <span>{isProcessing ? 'Processing...' : 'Pay Admission Fee (ভর্তি ফি দিন)'}</span>
+            <span>{isProcessing ? 'Processing...' : 'Pay Admission Fee'}</span>
           </button>
 
           <button
