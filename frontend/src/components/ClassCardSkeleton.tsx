@@ -12,6 +12,21 @@ export const ClassCardSkeleton: React.FC = () => {
           </div>
           <div className="h-6 bg-slate-200 rounded-full w-24 shrink-0" />
         </div>
+
+        {/* 1. Capacity Bar Skeleton */}
+        <div className="mb-4">
+          <div className="flex justify-between items-center mb-1.5">
+            <div className="h-3 bg-slate-200 rounded w-24" />
+            <div className="h-3 bg-slate-100 rounded w-16" />
+          </div>
+          <div className="h-3 w-full bg-slate-100 rounded-full overflow-hidden">
+            <div className="h-full bg-slate-200 rounded-full w-2/3" />
+          </div>
+          <div className="flex justify-between items-center mt-1">
+            <div className="h-2.5 bg-slate-100 rounded w-4" />
+            <div className="h-2.5 bg-slate-100 rounded w-24" />
+          </div>
+        </div>
       </div>
     </div>
   );
