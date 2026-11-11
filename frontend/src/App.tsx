@@ -137,6 +137,7 @@ export const App: React.FC = () => {
         <AlertBanner
           type={alert.type}
           message={alert.message}
+          autoCloseDuration={5000}
           onClose={() => setAlert(null)}
         />
       )}
